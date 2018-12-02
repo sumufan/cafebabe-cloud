@@ -1,0 +1,51 @@
+spring:
+  profiles: dev1
+  application:
+    name: service-v1
+server:
+  port: 9021
+  tomcat:
+    max-threads: 512
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-02.mufan.com:9002/eureka/
+---
+spring:
+  profiles: dev2
+  application:
+    name: service-v2
+server:
+  port: 9022
+  tomcat:
+    max-threads: 512
+
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-02.mufan.com:9002/eureka/
+
+---
+
+spring:
+  profiles: dev3
+  application:
+    name: service-v3
+server:
+  port: 9023
+  tomcat:
+    max-threads: 512
+
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-02.mufan.com:9002/eureka/

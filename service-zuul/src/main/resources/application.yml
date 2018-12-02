@@ -1,0 +1,85 @@
+spring:
+  profiles: dev1
+  application:
+    name: service-zuul
+server:
+  port: 9011
+  tomcat:
+    max-threads: 512
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    shutdown:
+      enabled: true
+zuul:
+  add-host-header: false
+  retryable: true
+  routes:
+    first:
+      path: /v1/**
+      serviceId: service-v1
+      stripPrefix: false
+    second:
+      path: /v2/**
+      serviceId: service-v2
+      stripPrefix: false
+    thrid:
+      path: /v3/**
+      serviceId: service-v3
+      stripPrefix: false
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-02.mufan.com:9002/eureka/
+
+
+---
+
+spring:
+  profiles: dev2
+  application:
+    name: service-zuul
+server:
+  port: 9012
+  tomcat:
+    max-threads: 512
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    shutdown:
+      enabled: true
+zuul:
+  add-host-header: false
+  retryable: true
+  routes:
+    first:
+      path: /v1/**
+      serviceId: service-v1
+      stripPrefix: false
+    second:
+      path: /v2/**
+      serviceId: service-v2
+    thrid:
+      path: /v3/**
+      serviceId: service-v3
+      stripPrefix: false
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-02.mufan.com:9002/eureka/
+
+
+
+
